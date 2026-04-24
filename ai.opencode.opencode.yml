@@ -34,6 +34,7 @@ modules:
         x-checker-data:
           type: json
           url: https://api.github.com/repos/anomalyco/opencode/releases/latest
+          version-query: .tag_name | sub("^v"; "")
           url-query: .assets[] | select(.name=="opencode-desktop-linux-amd64.deb") | .browser_download_url
       - type: file
         only-arches: [aarch64]
@@ -42,4 +43,5 @@ modules:
         x-checker-data:
           type: json
           url: https://api.github.com/repos/anomalyco/opencode/releases/latest
+          version-query: .tag_name | sub("^v"; "")
           url-query: .assets[] | select(.name=="opencode-desktop-linux-arm64.deb") | .browser_download_url
