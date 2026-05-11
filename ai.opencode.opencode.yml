@@ -49,8 +49,8 @@ modules:
     sources:
       - type: file
         only-arches: [x86_64]
-        url: https://github.com/anomalyco/opencode/releases/download/v1.14.33/opencode-desktop-linux-amd64.deb
-        sha256: 814d729ce302bef5fb2053b9d3cb0cda01fc11e14ba96f78d98c919a36ba1534
+        url: https://github.com/anomalyco/opencode/releases/download/v1.14.48/opencode-desktop-linux-amd64.deb
+        sha256: 2be86127041b1f4a8553bf168fab7ded46f690dcbe5f36496644301db6609816
         x-checker-data:
           type: json
           url: https://api.github.com/repos/anomalyco/opencode/releases/latest
