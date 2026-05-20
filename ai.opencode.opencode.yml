@@ -1,10 +1,10 @@
 id: ai.opencode.opencode
 runtime: org.gnome.Platform
-runtime-version: '49'
+runtime-version: '50'
 sdk: org.gnome.Sdk
-command: OpenCode
-rename-desktop-file: OpenCode.desktop
-rename-icon: OpenCode
+command: opencode-launcher
+rename-desktop-file: '@opencode-aidesktop.desktop'
+rename-icon: '@opencode-aidesktop'
 
 finish-args:
   - --share=ipc
@@ -43,27 +43,58 @@ modules:
       no-debuginfo: true
     build-commands:
       - ar x opencode-desktop-linux*.deb
-      - tar xf data.tar.gz
-      - mv usr/bin/* /app/bin
-      - mv usr/share/* /app/share
+      - |
+        if [ -f data.tar.gz ]; then
+          tar xf data.tar.gz
+        elif [ -f data.tar.xz ]; then
+          tar xf data.tar.xz
+        elif [ -f data.tar.zst ]; then
+          tar xf data.tar.zst
+        fi
+      
+      # 1. Standard directories
+      - mkdir -p /app/bin /app/lib /app/share
+      
+      # 2. Extract into /app/lib/OpenCode
+      - mv opt/OpenCode /app/lib/
+      
+      # 3. Create a launch wrapper script that disables Chromium's nested root sandbox
+      - |
+        cat << 'EOF' > /app/bin/opencode-launcher
+        #!/bin/sh
+        exec /app/lib/OpenCode/@opencode-aidesktop --no-sandbox "$@"
+        EOF
+      - chmod +x /app/bin/opencode-launcher
+      
+      # 4. Migrate system desktop files and assets
+      - mv usr/share/* /app/share/
+    
+    post-install:
+      # 5. Point the desktop environment shortcut specifically to our launcher script
+      - |
+        TARGET_FILE="/app/share/applications/ai.opencode.opencode.desktop"
+        if [ ! -f "$TARGET_FILE" ]; then
+          TARGET_FILE="/app/share/applications/@opencode-aidesktop.desktop"
+        fi
+        if [ -f "$TARGET_FILE" ]; then
+          desktop-file-edit --set-key=Exec --set-value="opencode-launcher %U" "$TARGET_FILE"
+        fi
     sources:
       - type: file
         only-arches: [x86_64]
-        url: https://github.com/anomalyco/opencode/releases/download/v1.14.33/opencode-desktop-linux-amd64.deb
-        sha256: 814d729ce302bef5fb2053b9d3cb0cda01fc11e14ba96f78d98c919a36ba1534
+        url: https://github.com/anomalyco/opencode/releases/download/v1.15.5/opencode-desktop-linux-amd64.deb
+        sha256: cecbcbdbe53c4c3838668e0fd8b9278b644ae1ba01ce2e2dc96a062a5db70995
         x-checker-data:
           type: json
           url: https://api.github.com/repos/anomalyco/opencode/releases/latest
           version-query: .tag_name | sub("^v"; "")
-          url-query: .assets[] | select(.name=="opencode-desktop-linux-amd64.deb")
-            | .browser_download_url
+          url-query: .assets[] | select(.name=="opencode-desktop-linux-amd64.deb") | .browser_download_url
       - type: file
         only-arches: [aarch64]
-        url: https://github.com/anomalyco/opencode/releases/download/v1.14.33/opencode-desktop-linux-arm64.deb
-        sha256: 42235d3d47405b85c6f235413c9728f4a379f91f1dd137e89c7a0347a6f779cc
+        url: https://github.com/anomalyco/opencode/releases/download/v1.15.5/opencode-desktop-linux-arm64.deb
+        sha256: 8a96b667497adbdfb77dd20e514930fdf8cb51d9955ba16f3df4e55c4ad77105
         x-checker-data:
           type: json
           url: https://api.github.com/repos/anomalyco/opencode/releases/latest
           version-query: .tag_name | sub("^v"; "")
-          url-query: .assets[] | select(.name=="opencode-desktop-linux-arm64.deb")
-            | .browser_download_url
+          url-query: .assets[] | select(.name=="opencode-desktop-linux-arm64.deb") | .browser_download_url
