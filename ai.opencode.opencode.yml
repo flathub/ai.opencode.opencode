@@ -57,6 +57,7 @@ modules:
       - mv usr/share/applications usr/share/icons /app/share
       - desktop-file-edit --set-key Exec --set-value "run.sh %U" /app/share/applications/ai.opencode.desktop.desktop
       - patch-electron-desktop-filename /app/main/resources/app.asar
+      - python3 patch-opencode-asar.py /app/main/resources/app.asar
       - install -Dm644 usr/share/metainfo/ai.opencode.desktop.metainfo.xml /app/share/metainfo/ai.opencode.opencode.metainfo.xml
       - install -Dm755 -t /app/bin run.sh
     sources:
@@ -86,3 +87,5 @@ modules:
           - zypak-wrapper.sh /app/main/ai.opencode.desktop "$@"
       - type: file
         path: metainfo.patch
+      - type: file
+        path: patch-opencode-asar.py
