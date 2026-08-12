@@ -73,8 +73,8 @@ modules:
             | .browser_download_url
       - type: file
         only-arches: [aarch64]
-        url: https://github.com/anomalyco/opencode/releases/download/v1.18.15/opencode-desktop-linux-arm64.deb
-        sha256: 6c252ea92922c8ac8d666aca9dd289ad22ddb2456959050fc9da99bd605ea8e2
+        url: https://github.com/anomalyco/opencode/releases/download/v1.18.17/opencode-desktop-linux-arm64.deb
+        sha256: 5906e3885ff7c8830a2884f6b23caa0390a3ae2e2988079fa838174eaa4362dd
         x-checker-data:
           type: json
           url: https://api.github.com/repos/anomalyco/opencode/releases/latest
