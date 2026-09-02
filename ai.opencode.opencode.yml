@@ -63,8 +63,8 @@ modules:
     sources:
       - type: file
         only-arches: [x86_64]
-        url: https://github.com/anomalyco/opencode/releases/download/v1.18.25/opencode-desktop-linux-amd64.deb
-        sha256: 319198179a7f356b962b52a6e1829bdad28683ae549495eb5d84a6a6e2d8212b
+        url: https://github.com/anomalyco/opencode/releases/download/v1.18.27/opencode-desktop-linux-amd64.deb
+        sha256: e7a8ff504d2d917fcfd91fa3dd18fd526b5292bd77fe2261c71c2c63c369e0aa
         x-checker-data:
           type: json
           url: https://api.github.com/repos/anomalyco/opencode/releases/latest
@@ -73,8 +73,8 @@ modules:
             | .browser_download_url
       - type: file
         only-arches: [aarch64]
-        url: https://github.com/anomalyco/opencode/releases/download/v1.18.25/opencode-desktop-linux-arm64.deb
-        sha256: cddcdad352d78879e34fd936621dc8fd2c9525af95bb96fe53c6043d32c060d6
+        url: https://github.com/anomalyco/opencode/releases/download/v1.18.27/opencode-desktop-linux-arm64.deb
+        sha256: ee16a8f8555989990c0ee01c499a75408355f1f13eed045d33242df92a6afafe
         x-checker-data:
           type: json
           url: https://api.github.com/repos/anomalyco/opencode/releases/latest
