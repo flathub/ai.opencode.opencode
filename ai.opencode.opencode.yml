@@ -39,8 +39,8 @@ modules:
       - NO_TCLTK=1
     sources:
       - type: archive
-        url: https://www.kernel.org/pub/software/scm/git/git-2.55.0.tar.gz
-        sha256: 0842dc384a23ac33ba3e570c4f3a8ded85963ee4713b1cd21153c3db41813d1e
+        url: https://www.kernel.org/pub/software/scm/git/git-2.56.0.tar.gz
+        sha256: 826817fd3671b8565586d6d49f688298de8354ab11db829c02720e5c74b9b39f
         x-checker-data:
           type: anitya
           project-id: 5350
@@ -63,8 +63,8 @@ modules:
     sources:
       - type: file
         only-arches: [x86_64]
-        url: https://github.com/anomalyco/opencode/releases/download/v1.18.32/opencode-desktop-linux-amd64.deb
-        sha256: bf6567ef9fda1a6393153700a1a34dca08f08f999c504cc6836513aebabd368c
+        url: https://github.com/anomalyco/opencode/releases/download/v1.18.35/opencode-desktop-linux-amd64.deb
+        sha256: 2243bff81e3ac08605fe8a2aff022f3f581cfd2ef07136a3f7cc32cb9fc74fa6
         x-checker-data:
           type: json
           url: https://api.github.com/repos/anomalyco/opencode/releases/latest
@@ -73,8 +73,8 @@ modules:
             | .browser_download_url
       - type: file
         only-arches: [aarch64]
-        url: https://github.com/anomalyco/opencode/releases/download/v1.18.32/opencode-desktop-linux-arm64.deb
-        sha256: 35b7b3d4895edd58fc65c6a40bedc06f65a9e29e988b9de9afb34e3d6a716ab2
+        url: https://github.com/anomalyco/opencode/releases/download/v1.18.35/opencode-desktop-linux-arm64.deb
+        sha256: 6c3f87e48b9dc53042aa9e850c055ec92a2ec893b3295673a93bf265ed7e5f75
         x-checker-data:
           type: json
           url: https://api.github.com/repos/anomalyco/opencode/releases/latest
