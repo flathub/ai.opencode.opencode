@@ -68,15 +68,15 @@ modules:
     sources:
       - type: file
         only-arches: [x86_64]
-        url: https://opencode.ai/files/bin/2.1.3/opencode-desktop-linux-amd64.deb
-        sha256: 5476fd98195cd447f16f3e7ca1c301b771f267fb3e345c7df869061fccaca150
+        url: https://opencode.ai/files/bin/2.3.0/opencode-desktop-linux-amd64.deb
+        sha256: 9800ce8bb48dfebabb090ecb7f7ffc2f565472c97c687d16a703f5bf05bc4496
         x-checker-data:
           type: rotating-url
           url: https://opencode.ai/update/api/latest/desktop/opencode/opencode-desktop-linux-amd64.deb
       - type: file
         only-arches: [aarch64]
-        url: https://opencode.ai/files/bin/2.1.3/opencode-desktop-linux-arm64.deb
-        sha256: e12d51367bf75773d4604459e1a41bea7ef6e4ea6819574f80287b36bfbecf27
+        url: https://opencode.ai/files/bin/2.3.0/opencode-desktop-linux-arm64.deb
+        sha256: d3645cb1402517c00f1979e835ab37b53d16b9812480b3443b08f65394a79db1
         x-checker-data:
           type: rotating-url
           url: https://opencode.ai/update/api/latest/desktop/opencode/opencode-desktop-linux-arm64.deb
