@@ -8,7 +8,7 @@ base: org.electronjs.Electron2.BaseApp
 base-version: '26.08'
 command: run.sh
 rename-desktop-file: ai.opencode.desktop.desktop
-rename-icon: ai.opencode.desktop
+rename-icon: ai.opencode
 
 finish-args:
   - --share=ipc
